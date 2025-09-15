@@ -1,0 +1,915 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    html.dark {
+      background-color: #121212;
+      color: white;
+    }
+
+    html {
+      background-color: white;
+      color: black;
+
+      transition: background-color 0.3s, color 0.3s;
+      height: 100%;
+    }
+
+    img {
+      filter: none;
+    }
+
+    /* Dark theme */
+    html.dark img.logo {
+      filter: brightness(0) invert(1);
+    }
+    /* btn */
+ html.dark button.btn {
+     background-color: white ;
+     color:black;
+    }
+    @font-face {
+      font-family: "Figtree";
+      src: url("./fonts/figtree-variable.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "Figtree";
+      src: url("./fonts/figtree-variable-italic.ttf") format("truetype");
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    @font-face {
+      font-family: "Stolzl";
+      src: url("./fonts/Stolzl-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .font-figtree {
+      font-family: "Figtree", sans-serif;
+    }
+
+    .font-stolzl {
+      font-family: "Stolzl", sans-serif;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* Prevent horizontal scrolling */
+    html,
+    body {
+      overflow-x: hidden;
+    }
+
+    .floating-icon {
+      position: absolute;
+      animation: float 6s ease-in-out infinite;
+      transition: transform 0.2s ease-out;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="font-figtree">
+  <header class=" h-[70px] md:h-[90px] w-full">
+    <nav class="flex justify-between items-center h-full  px-6">
+      <img src="./images/Buffer.svg" alt="buffer" class="logo rounded-3xl w-[150px] h-[70px]" />
+      <div class="hidden lg:flex gap-2 text-xl justify-center items-center">
+        <Button
+          class="hover:bg-gray-300 rounded-full w-[170px] h-[40px] flex justify-center items-center gap-1">Features<img
+            src="./images/dropdown-arrow-svgrepo-com.svg" class="logo object-cover w-9 h-6" alt="drop"></Button>
+        <Button
+          class="hover:bg-gray-300 rounded-full w-[170px] h-[40px] flex justify-center items-center gap-1">Channels<img
+            src="./images/dropdown-arrow-svgrepo-com.svg" class="logo object-cover w-9 h-6" alt="drop"></Button>
+        <Button
+          class="hover:bg-gray-300 rounded-full w-[170px] h-[40px] flex justify-center items-center gap-1">Resources<img
+            src="./images/dropdown-arrow-svgrepo-com.svg" class="logo object-cover w-9 h-6" alt="drop"></Button>
+        <Button
+          class="hover:bg-gray-300 rounded-full w-[170px] h-[40px] flex justify-center items-center gap-1">Pricing</Button>
+      </div>
+      <div class="flex items-center gap-6">
+        <button id="toggleTheme" class="h-10 w-10">
+          <img src="./images/night-mode.png" alt="" class="logo h-10  w-10 object-cover rounded-full">
+        </button>
+        <button
+          class="hidden md:inline-block bg-white text-black w-[100px] h-[50px] rounded-full border border-black text-sm transition-transform duration-100 hover:-translate-y-1">
+          Log in
+        </button>
+        <button
+          class="hidden lg:block bg-green-400  text-white lg:w-[200px] lg:h-[50px] rounded-full text-base font-semibold shadow-sm hover:bg-green-500 transition-transform duration-100 hover:-translate-y-1">
+          Get started
+        </button>
+        <img src="./images/menu.png" alt="menu" class="w-7 h-7 md:hidden" />
+      </div>
+    </nav>
+  </header>
+  <main>
+    <!-- hero section -->
+    <section class="relative h-[700px] flex flex-col justify-center items-center ">
+      <div class="absolute inset-0 
+      bg-[linear-gradient(to_right,#d1d5db_1px,transparent_1px),linear-gradient(to_bottom,#d1d5db_1px,transparent_1px)] 
+      bg-[size:30px_30px] opacity-30
+      [mask-image:radial-gradient(circle,rgba(0,0,0,1)_70%,rgba(0,0,0,0)_100%)] 
+      [mask-repeat:no-repeat] [mask-position:center] [mask-size:cover]">
+       </div>
+<!-- Fade edges -->
+<div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white"></div>
+      <!-- Hero content -->
+      <div class="relative z-10 text-center max-w-5xl">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+          Your Social Media <br>
+          <span class="block">Workspace</span>
+        </h1>
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-600 mt-8">
+          Share Consistently without the Chaos
+        </p>
+
+        <!-- Email form -->
+        <div
+          class="mt-10 flex items-center w-full max-w-xl mx-auto rounded-full border border-gray-300 p-2 bg-white shadow-lg">
+          <input type="text" placeholder="Enter your email"
+            class="flex-1 px-4 py-3 text-base sm:text-lg md:text-xl rounded-full placeholder-gray-500 focus:outline-none" />
+          <button
+            class="bg-green-400 text-white text-sm sm:text-base md:text-lg font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-full ml-2 hover:bg-green-600 transition">
+            Get Started Now
+          </button>
+        </div>
+      </div>
+      <!-- Floating icons -->
+      <div class="absolute inset-0 pointer-events-none">
+
+        <!-- Facebook -->
+        <svg class="floating-icon absolute left-10 top-20 w-10 h-10 opacity-90" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24" fill="#1877F2">
+          <path
+            d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078V12.07h3.047V9.412c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.234 2.686.234v2.953h-1.514c-1.493 0-1.954.93-1.954 1.887v2.253h3.328l-.532 3.493h-2.796V24C19.612 23.094 24 18.1 24 12.073z" />
+        </svg>
+
+        <!-- Twitter -->
+        <svg class="floating-icon absolute right-20 top-40 w-12 h-12 opacity-70 blur-sm"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#1DA1F2">
+          <path
+            d="M23.954 4.569c-.885.392-1.83.656-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.564-2.005.974-3.127 1.195-.897-.959-2.178-1.559-3.594-1.559-2.717 0-4.924 2.206-4.924 4.923 0 .39.045.765.127 1.124-4.09-.205-7.719-2.165-10.148-5.144-.424.729-.666 1.577-.666 2.475 0 1.708.87 3.216 2.188 4.099-.807-.026-1.566-.247-2.229-.616v.062c0 2.385 1.693 4.374 3.946 4.827-.413.112-.849.171-1.296.171-.317 0-.626-.03-.927-.087.627 1.956 2.444 3.379 4.6 3.42-1.68 1.318-3.809 2.105-6.102 2.105-.396 0-.788-.023-1.175-.067 2.179 1.397 4.768 2.212 7.557 2.212 9.054 0 14-7.496 14-13.986 0-.213-.004-.425-.013-.637.961-.695 1.8-1.562 2.462-2.549z" />
+        </svg>
+
+        <!-- LinkedIn -->
+        <svg class="floating-icon absolute left-1/3 bottom-28 w-8 h-8 opacity-100" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24" fill="#0A66C2">
+          <path
+            d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.037-1.852-3.037-1.853 0-2.137 1.445-2.137 2.939v5.667h-3.554V9h3.414v1.561h.048c.477-.9 1.637-1.852 3.368-1.852 3.6 0 4.267 2.368 4.267 5.452v6.291zM5.337 7.433c-1.144 0-2.067-.926-2.067-2.067 0-1.142.923-2.066 2.067-2.066 1.141 0 2.066.924 2.066 2.066 0 1.141-.925 2.067-2.066 2.067zm1.777 13.019H3.56V9h3.554v11.452z" />
+        </svg>
+
+        <!-- Instagram -->
+        <svg class="floating-icon absolute right-1/4 top-1/4 w-14 h-14 opacity-40 blur-sm"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <defs>
+            <radialGradient id="ig" cx="30%" cy="107%" r="150%" fx="50%" fy="50%">
+              <stop offset="0%" stop-color="#fdf497" />
+              <stop offset="45%" stop-color="#fd5949" />
+              <stop offset="60%" stop-color="#d6249f" />
+              <stop offset="90%" stop-color="#285AEB" />
+            </radialGradient>
+          </defs>
+          <path fill="url(#ig)" d="M12 2.163c3.204 0 3.584.012 4.85.07..." />
+        </svg>
+
+        <!-- YouTube -->
+        <svg class="floating-icon absolute left-1/4 bottom-10 w-12 h-12 opacity-80" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24" fill="#FF0000">
+          <path
+            d="M23.498 6.186a2.994 2.994 0 0 0-2.11-2.12C19.691 3.5 12 3.5 12 3.5s-7.691 0-9.388.566a2.994 2.994 0 0 0-2.11 2.12A31.225 31.225 0 0 0 .5 12a31.225 31.225 0 0 0 .002 5.814 2.994 2.994 0 0 0 2.11 2.12C4.309 20.5 12 20.5 12 20.5s7.691 0 9.388-.566a2.994 2.994 0 0 0 2.11-2.12A31.225 31.225 0 0 0 23.5 12a31.225 31.225 0 0 0-.002-5.814zM9.75 15.568V8.432L15.568 12 9.75 15.568z" />
+        </svg>
+        <svg class="floating-icon absolute right-10 bottom-20 w-10 h-10 opacity-90" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24" fill="#1877F2">
+          <path
+            d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078V12.07h3.047V9.412c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.234 2.686.234v2.953h-1.514c-1.493 0-1.954.93-1.954 1.887v2.253h3.328l-.532 3.493h-2.796V24C19.612 23.094 24 18.1 24 12.073z" />
+        </svg>
+        <svg class="floating-icon absolute  right-60 top-10 w-12 h-12" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24" fill="#FF0000">
+          <path
+            d="M23.498 6.186a2.994 2.994 0 0 0-2.11-2.12C19.691 3.5 12 3.5 12 3.5s-7.691 0-9.388.566a2.994 2.994 0 0 0-2.11 2.12A31.225 31.225 0 0 0 .5 12a31.225 31.225 0 0 0 .002 5.814 2.994 2.994 0 0 0 2.11 2.12C4.309 20.5 12 20.5 12 20.5s7.691 0 9.388-.566a2.994 2.994 0 0 0 2.11-2.12A31.225 31.225 0 0 0 23.5 12a31.225 31.225 0 0 0-.002-5.814zM9.75 15.568V8.432L15.568 12 9.75 15.568z" />
+        </svg>
+        <svg class="floating-icon absolute top-80 right-70 h-8 opacity-100" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24" fill="#0A66C2">
+          <path
+            d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.037-1.852-3.037-1.853 0-2.137 1.445-2.137 2.939v5.667h-3.554V9h3.414v1.561h.048c.477-.9 1.637-1.852 3.368-1.852 3.6 0 4.267 2.368 4.267 5.452v6.291zM5.337 7.433c-1.144 0-2.067-.926-2.067-2.067 0-1.142.923-2.066 2.067-2.066 1.141 0 2.066.924 2.066 2.066 0 1.141-.925 2.067-2.066 2.067zm1.777 13.019H3.56V9h3.554v11.452z" />
+        </svg>
+        <!-- GitHub -->
+        <svg class="floating-icon absolute  right-150 top-10 w-12 h-12" xmlns="http://www.w3.org/2000/svg" width="24"
+          height="24" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 .296c-6.63 0-12 5.373-12 12 0 5.302 
+  3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 
+  0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61 
+  -.546-1.387-1.333-1.757-1.333-1.757-1.089-.744.083-.729.083-.729 
+  1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 
+  3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.466-1.334-5.466-5.93 
+  0-1.31.468-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 
+  0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013.003-.404c1.018.005 
+  2.045.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23 
+  .655 1.653.243 2.874.12 3.176.771.84 1.235 1.911 
+  1.235 3.221 0 4.609-2.804 5.624-5.475 5.921.43.371.823 1.103.823 2.222 
+  0 1.606-.014 2.896-.014 3.286 0 .321.216.694.825.576C20.565 22.092 24 17.592 
+  24 12.296c0-6.627-5.373-12-12-12" />
+        </svg>
+        <!-- Pinterest -->
+        <svg class="floating-icon absolute left-70 top-20 w-12 h-12" xmlns="http://www.w3.org/2000/svg" width="24"
+          height="24" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M12 0C5.372 0 0 5.373 0 12c0 4.991 3.657 9.128 8.438 10.069-.117-.854-.222-2.165.046-3.097.242-.83 1.557-5.287 1.557-5.287s-.397-.794-.397-1.966c0-1.84 1.067-3.213 2.394-3.213 1.129 0 1.676.848 1.676 1.867 0 1.137-.724 2.836-1.098 4.415-.314 1.335.667 2.423 1.98 2.423 2.374 0 3.963-3.05 3.963-6.66 0-2.746-1.851-4.804-5.217-4.804-3.802 0-6.172 2.844-6.172 6.023 0 1.096.422 2.272.95 2.913a.383.383 0 01.089.368c-.097.405-.317 1.285-.36 1.463-.057.241-.186.293-.431.177-1.606-.747-2.61-3.083-2.61-4.966 0-4.045 2.938-7.759 8.463-7.759 4.442 0 7.895 3.166 7.895 7.396 0 4.41-2.778 7.962-6.63 7.962-1.295 0-2.512-.672-2.928-1.466l-.797 3.043c-.288 1.099-1.072 2.476-1.596 3.315C9.616 23.812 10.784 24 12 24c6.628 0 12-5.373 12-12S18.628 0 12 0z" />
+        </svg>
+        <svg class="floating-icon absolute left-20 top-80 w-12 h-12 opacity-70 blur-sm"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#1DA1F2">
+          <path
+            d="M23.954 4.569c-.885.392-1.83.656-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.564-2.005.974-3.127 1.195-.897-.959-2.178-1.559-3.594-1.559-2.717 0-4.924 2.206-4.924 4.923 0 .39.045.765.127 1.124-4.09-.205-7.719-2.165-10.148-5.144-.424.729-.666 1.577-.666 2.475 0 1.708.87 3.216 2.188 4.099-.807-.026-1.566-.247-2.229-.616v.062c0 2.385 1.693 4.374 3.946 4.827-.413.112-.849.171-1.296.171-.317 0-.626-.03-.927-.087.627 1.956 2.444 3.379 4.6 3.42-1.68 1.318-3.809 2.105-6.102 2.105-.396 0-.788-.023-1.175-.067 2.179 1.397 4.768 2.212 7.557 2.212 9.054 0 14-7.496 14-13.986 0-.213-.004-.425-.013-.637.961-.695 1.8-1.562 2.462-2.549z" />
+        </svg>
+
+
+      </div>
+    </section>
+    </div>
+    <section class="flex flex-col lg:flex-row gap-6 lg:gap-10 justify-center items-center  p-4">
+      <div
+        class="flex flex-col justify-center items-center h-[180px] w-full max-w-sm border bg-white border-gray-300 rounded-xl gap-4">
+        <h1 class="text-4xl font-bold text-black">188,846</h1>
+        <p class="text-lg text-gray-500">ACTIVE USERS</p>
+      </div>
+      <div
+        class="flex flex-col justify-center items-center h-[180px] w-full max-w-sm border bg-white border-gray-300 rounded-xl gap-4">
+        <h1 class="text-4xl font-bold  text-black">7,858,881</h1>
+        <p class="text-lg text-gray-500 text-center px-4">POSTS PUBLISHED LAST MONTH</p>
+      </div>
+      <div
+        class="flex flex-col justify-center items-center h-[180px] w-full max-w-sm border bg-white border-gray-300 rounded-xl gap-4">
+        <h1 class="text-4xl font-bold  text-black">11</h1>
+        <p class="text-lg text-gray-500 text-center">SOCIAL PLATFORMS SUPPORTED</p>
+      </div>
+    </section>
+    <!-- purple section -->
+    <section class=" py-10 px-4">
+      <div
+        class="bg-purple-300 rounded-3xl max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10 p-8 min-h-[700px]">
+        <div class="w-full lg:w-1/2 flex justify-center items-center">
+          <img src="./images/post1.webp" alt="post" class="object-cover w-full max-w-xl rounded-8xl" />
+        </div>
+        <div class="w-full lg:w-1/2 flex flex-col items-start justify-start gap-6 text-left">
+          <p class="text-purple-900 text-2xl">PUBLISH</p>
+          <h3 class="text-black text-3xl lg:text-4xl leading-snug">
+            The most complete set of publishing integrations, ever
+          </h3>
+          <p class="text-lg lg:text-xl text-gray-800">
+            Schedule your content to the most popular platforms including Facebook, Instagram, TikTok,
+            LinkedIn, Threads, Bluesky, YouTube Shorts, Pinterest, Google Business, Mastodon and X.
+          </p>
+          <button
+            class="bg-black text-white px-6 py-3 rounded-4xl flex items-center gap-2 hover:bg-gray-900 transition">
+            Learn more
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <div class="flex items-start gap-3">
+            <img src="./images/schedule.png" class="w-10 h-10 object-cover" alt="">
+            <p class="text-base lg:text-lg">Auto-publish your content or get a notification when it's time to post</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <img src="./images/magic-wand.png" class="w-10 h-10 object-cove" alt="">
+            <p class="text-base lg:text-lg">Magically customize and repurpose your post for each platform</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <img src="./images/calendar.png" class="w-10 h-10 object-cover" alt="">
+            <p class="text-base lg:text-lg">See everything you have scheduled in a calendar or queue view</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- image section -->
+    <!-- Pink Section -->
+    <section class="py-10 px-4">
+      <div
+        class="bg-pink-300 rounded-3xl lg:max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10 p-8 lg:min-h-[700px] relative">
+        <!-- Left Content -->
+        <div class="w-full lg:w-1/2 flex flex-col items-start justify-start gap-6 text-left">
+          <p class="text-pink-900 text-2xl">Create</p>
+          <h3 class="text-black text-3xl lg:text-4xl leading-snug">
+            Turn any idea into the perfect post
+          </h3>
+          <p class="text-lg lg:text-xl text-gray-800">
+            Whether you’re flying solo or working with a team, Buffer has all the features to help you create, organize,
+            and repurpose your content for any channel. There’s also an AI Assistant if you need it.
+          </p>
+
+          <button
+            class="bg-black text-white px-6 py-3 rounded-4xl flex items-center gap-2 hover:bg-gray-900 transition">
+            Learn more
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <div class="flex items-start gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+              stroke-linejoin="round" stroke-width="1.5" aria-hidden="true">
+              <path d="M18.945 11.968v5.426a1.55 1.55 0 0 1-1.55 1.55H6.542a1.55 1.55 0 0 1-1.55-1.55V6.542a1.55 1.55 
+          0 0 1 1.55-1.55h5.427m3.1 1.55h4.651m-2.325-2.325v4.65m1.55 5.427-2.392-2.392a1.55 1.55 0 0 0-2.192 0l-7.043
+           7.043m3.875-9.302a1.55 1.55 0 1 1-3.1 0 1.55 1.55 0 0 1 3.1 0Z"></path>
+            </svg>
+            <p class="text-base lg:text-lg">Import content from Canva, Dropbox, Google and more</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+              stroke-linejoin="round" stroke-width="1.5" aria-hidden="true">
+              <path
+                d="M9.643 13.519H5.767a.775.775 0 0 0-.775.775v3.876c0 .428.347.775.775.775h3.876a.775.775 0 0 0 .775-.775v-3.876a.775.775 0 0 0-.775-.775ZM9.643 4.992H5.767a.775.775
+                 0 0 0-.775.775v3.876c0 .428.347.775.775.775h3.876a.775.775 0 0 0 .775-.775V5.767a.775.775 0 0 0-.775-.775ZM18.17 13.519h-3.876a.775.775 0 0 0-.775.775v3.876c0 .428.347.775.775.775h3.876a.775.775 0 0 0 
+                 .775-.775v-3.876a.775.775 0 0 0-.775-.775ZM15.656 4.804l-2.349 2.35c-.26.259-.26.68 0 .939l2.35 2.349c.259.26.68.26.939 0l2.349-2.35c.26-.259.26-.68 0-.939l-2.35-2.349a.664.664 0 0 0-.939 0Z">
+              </path>
+            </svg>
+            <p class="text-base lg:text-lg">Visually organize your ideas into groups or themes</p>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+              stroke-linejoin="round" stroke-width="1.5" aria-hidden="true">
+              <path d="M10.418 12.744a3.877 3.877 0 0 0 5.845.418l2.325-2.325a3.876 3.876 0 0 0-5.48-5.48l-1.333 1.325m1.744 4.511a3.876 3.876 0 0 0-5.845-.418L5.35 13.1a3.876 3.876 
+              0 0 0 5.48 5.48l1.325-1.325"></path>
+            </svg>
+            <p class="text-base lg:text-lg">Add a beautiful link in bio page to your profiles</p>
+          </div>
+        </div>
+        <!-- Right Image -->
+        <div class="w-full lg:w-1/2 flex justify-center items-center relative z-10">
+          <img src="./images/post2.webp" alt="post" class="object-cover w-full max-w-xl rounded-3xl" />
+        </div>
+      </div>
+    </section>
+    <!-- Orange + Green Section -->
+    <section class="py-10 px-4">
+      <div class="lg:max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
+        <!-- Orange Block -->
+        <div class="bg-orange-300 rounded-3xl flex-1 flex flex-col justify-between gap-10 p-8 lg:min-h-[700px]">
+          <div class="flex flex-col gap-6">
+            <p class="text-orange-900 text-2xl">Collaborate</p>
+            <h3 class="text-black text-3xl lg:text-4xl ">
+              Great content, created together
+            </h3>
+            <p class="text-lg lg:text-xl text-gray-800">
+              Collaborate seamlessly with your team. Invite unlimited collaborators, assign roles and permissions, and
+              keep everyone aligned with saved drafts and notes.
+            </p>
+            <button
+              class="bg-black text-white px-6 py-3 rounded-4xl flex items-center gap-2 hover:bg-gray-900 transition w-fit">
+              Learn more
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+          <img src="./images/post3.webp" alt="post" class="object-cover w-full rounded-3xl" />
+        </div>
+
+        <!-- Green Block -->
+        <div class="bg-green-300 rounded-3xl flex-1 flex flex-col justify-between gap-10 p-8 lg:min-h-[700px]">
+          <div class="flex flex-col gap-6">
+            <p class="text-green-900 text-2xl">Engage</p>
+            <h3 class="text-black text-3xl lg:text-4xl leading-snug">
+              Reply to comments in a flash
+            </h3>
+            <p class="text-lg lg:text-xl text-gray-800">
+              Engage with your audience on Facebook and Instagram at 10x speed. Buffer will help you triage and respond
+              to comments from one simple dashboard.
+            </p>
+            <button
+              class="bg-black text-white px-6 py-3 rounded-4xl flex items-center gap-2 hover:bg-gray-900 transition w-fit">
+              Learn more
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+          <img src="./images/post4.webp" alt="post" class="object-cover w-full rounded-3xl" />
+        </div>
+
+      </div>
+    </section>
+    <!-- blue section -->
+    <section class="py-5 px-4">
+      <div
+        class="bg-blue-300 rounded-3xl lg:max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10 p-20 lg:min-h-[700px] relative">
+        <!-- Left Content -->
+        <div class="w-full lg:w-1/2 flex flex-col items-start justify-start gap-6 text-left">
+          <p class="text-blue-900 text-2xl">Analyze</p>
+          <h3 class="text-black text-3xl lg:text-4xl leading-snug">
+            Answers, not just analytics
+          </h3>
+          <p class="text-lg lg:text-xl text-gray-800">
+            Whether it’s basic analytics or in-depth reporting, Buffer will help you learn what works and how to
+            improve.
+          </p>
+
+          <button
+            class="bg-black text-white px-6 py-3 rounded-4xl flex items-center gap-2 hover:bg-gray-900 transition">
+            Learn more
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <div class="flex items-start gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+              stroke-linejoin="round" stroke-width="1.5" aria-hidden="true">
+              <path d="M4.992 4.992v13.953h13.953m-2.326-3.1V9.642m-3.875 6.201V6.542m-3.876 9.302V13.52"></path>
+            </svg>
+            <p class="text-base lg:text-lg">See the best times, formats, and frequencies to post</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+              stroke-linejoin="round" stroke-width="1.5" aria-hidden="true">
+              <path
+                d="M15.069 18.945v-1.55a3.1 3.1 0 0 0-3.1-3.101H7.316a3.1 3.1 0 0 0-3.1 3.1v1.55m15.503 0v-1.55a3.101 3.101 0 0 0-2.326-3M15.07 5.094a3.1 3.1 0 0 1 0 6.007m-2.326-3.007a3.1 3.1 0 1 1-6.2 0 3.1 3.1 0 0 1 6.2 0Z">
+              </path>
+            </svg>
+            <p class="text-base lg:text-lg">Get demographic data about your audience</p>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+              stroke-linejoin="round" stroke-width="1.5" aria-hidden="true">
+              <path
+                d="M15.844 8.093h-.007M11.51 4.67a1.55 1.55 0 0 1 1.096-.454h5.56a1.55 1.55 0 0 1 1.55 1.55v5.56c0 .41-.164.805-.454 1.096l-6.747 6.747a1.88 1.88 0 0 1-2.651 0l-5.1-5.1a1.88 1.88 0 0 1 0-2.652l6.746-6.747Z">
+              </path>
+            </svg>
+            <p class="text-base lg:text-lg">Tag and recycle your best-performing content</p>
+          </div>
+        </div>
+        <!-- Right Image -->
+        <div class="w-full lg:w-1/2 flex justify-center items-center relative z-10">
+          <img src="./images/post5.webp" alt="post" class="object-cover w-full max-w-xl rounded-3xl" />
+        </div>
+      </div>
+    </section>
+    <!-- social button -->
+    <section class="h-[400px] lg:h-[250px] w-full lg:mt-2 text-black">
+      <div
+        class="border border-black h-full lg:h-[95%] rounded-4xl lg:m-18  flex flex-col bg-white items-center justify-center p-5 m-10 mx-auto lg:max-w-6xl">
+        <h1 class="text-lg font-semibold mb-5 text-center">
+          Connect your favorite accounts
+        </h1>
+        <!-- Icons wrapper -->
+        <div class="grid grid-cols-4 gap-10 lg:flex lg:gap-4 items-center justify-center">
+          <span class="h-16 w-16 border  p-2 rounded-xl"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor"
+                d="M5.769 4.212C8.29 5.972 11.004 9.539 12 11.453c.996-1.914 3.709-5.482 6.231-7.241C20.051 2.942 23 1.96 23 5.086c0 .624-.385 5.244-.611 5.994-.785 2.608-3.647 3.273-6.192 2.87 4.449.704 5.58 3.035 3.136 5.366-4.642 4.426-6.672-1.111-7.192-2.53-.096-.26-.14-.382-.141-.278 0-.104-.045.018-.14.278-.52 1.419-2.55 6.956-7.193 2.53-2.445-2.331-1.313-4.662 3.136-5.366-2.545.403-5.407-.262-6.192-2.87C1.385 10.33 1 5.71 1 5.086c0-3.126 2.949-2.144 4.769-.874Z">
+              </path>
+            </svg></span>
+          <span class="h-16 w-16 border p-2 rounded-xl"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor"
+                d="M23 12.067C23 5.955 18.075 1 12 1S1 5.955 1 12.067C1 17.591 5.023 22.17 10.281 23v-7.734H7.488v-3.199h2.793V9.63c0-2.774 1.643-4.306 4.155-4.306 1.204 0 2.462.216 2.462.216v2.724h-1.387c-1.366 0-1.792.853-1.792 1.728v2.076h3.05l-.487 3.2h-2.563V23C18.977 22.17 23 17.591 23 12.067Z">
+              </path>
+            </svg></span>
+          <span class="h-16 w-16 border p-2 rounded-xl"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor"
+                d="M22 8.5c0 1.37-1.12 2.5-2.5 2.5S17 9.87 17 8.5c0 1.37-1.12 2.5-2.5 2.5S12 9.87 12 8.5c0 1.37-1.12 2.5-2.5 2.5S7 9.87 7 8.5C7 9.87 5.88 11 4.5 11S2 9.87 2 8.5l1.39-5.42S3.68 2 4.7 2h14.6c1.02 0 1.31 1.08 1.31 1.08L22 8.5Zm-1 3.7V20c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2v-7.8a3.96 3.96 0 0 0 4-.58c.69.55 1.56.88 2.5.88.95 0 1.82-.33 2.5-.88.69.55 1.56.88 2.5.88.95 0 1.82-.33 2.5-.88.68.55 1.56.88 2.5.88.53 0 1.04-.11 1.5-.3Zm-2 5.13c0-.2 0-.41-.05-.63l-.03-.16h-2.97v1.17h1.81c-.06.22-.14.44-.31.62-.33.33-.78.51-1.26.51-.5 0-.99-.21-1.35-.56-.69-.71-.69-1.86.02-2.58.69-.7 1.83-.7 2.55-.03l.14.13.84-.85-.16-.14c-.56-.52-1.3-.81-2.08-.81h-.01c-.81 0-1.57.31-2.14.87-.59.58-.92 1.34-.92 2.13 0 .8.31 1.54.88 2.09a3.2 3.2 0 0 0 2.22.91h.02c.8 0 1.51-.29 2.03-.8.47-.48.77-1.2.77-1.87Z">
+              </path>
+            </svg></span>
+          <span class="h-16 w-16 border p-2 rounded-xl"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor" fill-rule="evenodd"
+                d="M20.387 3.653C19.34 2.565 17.847 2 16.153 2H7.847C4.339 2 2 4.339 2 7.847v8.266c0 1.734.565 3.226 1.694 4.314C4.782 21.476 6.234 22 7.887 22h8.226c1.734 0 3.185-.564 4.234-1.573C21.435 19.38 22 17.887 22 16.153V7.847c0-1.694-.564-3.145-1.613-4.194Zm-.161 12.5c0 1.25-.444 2.258-1.17 2.944-.725.685-1.733 1.048-2.943 1.048H7.887c-1.21 0-2.218-.363-2.943-1.048-.726-.726-1.09-1.734-1.09-2.984V7.847c0-1.21.364-2.218 1.09-2.944.685-.685 1.733-1.048 2.943-1.048h8.306c1.21 0 2.218.363 2.944 1.089.686.725 1.089 1.733 1.089 2.903v8.306Zm-1.694-9.476a1.17 1.17 0 1 1-2.339 0 1.17 1.17 0 0 1 2.339 0ZM6.838 11.96c0-2.863 2.34-5.162 5.162-5.162s5.161 2.34 5.161 5.162S14.863 17.12 12 17.12a5.146 5.146 0 0 1-5.162-5.161Zm1.855 0A3.321 3.321 0 0 0 12 15.266a3.321 3.321 0 0 0 3.306-3.306A3.321 3.321 0 0 0 12 8.653a3.321 3.321 0 0 0-3.307 3.307Z">
+              </path>
+            </svg></span>
+          <span class="h-16 w-16 border p-2 rounded-xl"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor" fill-rule="evenodd"
+                d="M18.338 18.338H15.67v-4.177c0-.997-.018-2.278-1.387-2.278-1.39 0-1.602 1.085-1.602 2.206v4.25h-2.668v-8.59h2.561v1.173h.036c.356-.675 1.227-1.388 2.526-1.388 2.703 0 3.202 1.78 3.202 4.092v4.712ZM7.004 8.574a1.548 1.548 0 1 1 0-3.097 1.548 1.548 0 0 1 0 3.097ZM5.67 18.338h2.67v-8.59h-2.67v8.59ZM19.668 3H4.328C3.597 3 3 3.581 3 4.297v15.404C3 20.418 3.596 21 4.329 21h15.339c.734 0 1.332-.582 1.332-1.299V4.297C21 3.581 20.402 3 19.668 3Z">
+              </path>
+            </svg></span>
+          <span class="h-16 w-16 border p-2 rounded-xl"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor" fill-rule="evenodd"
+                d="M16.68 17.768c2.955-.329 5.528-2.027 5.852-3.58.51-2.444.467-5.965.467-5.965 0-4.773-3.352-6.171-3.352-6.171-1.69-.725-4.592-1.029-7.608-1.052h-.074c-3.015.023-5.915.327-7.606 1.052 0 0-3.352 1.398-3.352 6.171l-.003.91c-.005.88-.01 1.856.017 2.875.122 4.667.918 9.267 5.544 10.41 2.133.526 3.964.636 5.439.56 2.675-.138 4.176-.89 4.176-.89l-.088-1.81s-1.911.562-4.058.494c-2.127-.068-4.372-.214-4.716-2.65a4.664 4.664 0 0 1-.048-.683s2.088.476 4.734.59c1.618.068 3.135-.09 4.676-.26Zm2.365-3.396V8.593c0-1.18-.322-2.12-.97-2.814-.668-.694-1.542-1.05-2.627-1.05-1.257 0-2.208.45-2.837 1.351L12 7.036l-.611-.956c-.63-.9-1.58-1.351-2.836-1.351-1.086 0-1.96.356-2.628 1.05-.648.695-.97 1.633-.97 2.814v5.779h2.454V8.763c0-1.182.534-1.782 1.6-1.782 1.18 0 1.771.711 1.771 2.12v3.07h2.44V9.1c0-1.409.591-2.12 1.77-2.12 1.067 0 1.6.6 1.6 1.782v5.609h2.455Z">
+              </path>
+            </svg></span>
+          <span class="h-16 w-16 border p-2 rounded-xl"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor" fill-rule="evenodd"
+                d="M12 1C5.925 1 1 5.925 1 12c0 4.66 2.9 8.644 6.991 10.247-.096-.87-.183-2.21.039-3.16.2-.858 1.29-5.467 1.29-5.467s-.33-.659-.33-1.633c0-1.53.887-2.672 1.99-2.672.94 0 1.392.705 1.392 1.55 0 .944-.6 2.355-.91 3.662-.26 1.095.549 1.988 1.628 1.988 1.955 0 3.458-2.061 3.458-5.037 0-2.634-1.892-4.475-4.594-4.475-3.13 0-4.967 2.347-4.967 4.774 0 .945.364 1.959.818 2.51a.33.33 0 0 1 .077.315c-.084.348-.27 1.095-.306 1.248-.048.201-.16.244-.368.147-1.374-.64-2.233-2.648-2.233-4.262 0-3.47 2.521-6.656 7.268-6.656 3.816 0 6.782 2.719 6.782 6.353 0 3.791-2.39 6.842-5.708 6.842-1.115 0-2.163-.58-2.521-1.263 0 0-.552 2.1-.686 2.615-.248.955-.919 2.153-1.367 2.883 1.03.319 2.123.491 3.257.491 6.075 0 11-4.925 11-11S18.075 1 12 1Z">
+              </path>
+            </svg></span>
+          <span class="h-16 w-16 border p-2 rounded-xl"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor"
+                d="M11.628 1.256c-.72.033-1.37.106-1.987.222-2.53.481-4.495 1.715-5.805 3.648-.097.143-.179.272-.306.481-.062.1-.29.529-.364.685a11.365 11.365 0 0 0-.852 2.57c-.18.869-.272 1.683-.307 2.701a16.084 16.084 0 0 0 .24 3.23c.305 1.667.869 3.067 1.707 4.245 1.019 1.427 2.402 2.454 4.126 3.062 1.062.374 2.235.584 3.585.64.485.02 1.004.01 1.574-.028 2.455-.168 4.3-.903 5.84-2.325.889-.82 1.479-1.757 1.766-2.805a5.35 5.35 0 0 0 .173-.964 7.545 7.545 0 0 0 0-.907c-.112-1.177-.521-2.134-1.273-2.973-.16-.18-.519-.51-.714-.66a7.256 7.256 0 0 0-1.632-.938l-.134-.055-.014-.174c-.098-1.194-.442-2.172-1.039-2.946-.814-1.056-2.1-1.642-3.737-1.701-1.308-.048-2.457.254-3.386.89a4.61 4.61 0 0 0-.545.443 4.266 4.266 0 0 0-.548.611l-.05.07.282.178.802.508.552.349.03.019.102-.126c.557-.689 1.416-1.05 2.494-1.05.79 0 1.437.168 1.913.497.516.358.852.917 1.026 1.708.017.076.03.145.03.152 0 .01-.022.01-.093-.002-.822-.13-2.057-.171-2.983-.097-1.08.085-2.015.367-2.769.838a3.876 3.876 0 0 0-.973.862 3.13 3.13 0 0 0-.64 1.508c-.03.2-.03.698.001.902.145.98.671 1.774 1.554 2.35.852.554 2.043.839 3.22.77 1.845-.11 3.18-.885 3.986-2.314.31-.55.566-1.323.673-2.039a.785.785 0 0 1 .022-.115c.006-.009.046.009.135.063.267.161.472.313.69.516.591.547.909 1.189 1.007 2.029.022.182.018.598-.007.79-.12.94-.563 1.754-1.341 2.47-1.072.986-2.344 1.534-4.002 1.723-1.258.145-2.564.099-3.692-.128-2.92-.587-4.773-2.367-5.55-5.331-.419-1.589-.514-3.502-.266-5.282.35-2.516 1.365-4.386 2.99-5.513C8.19 3.785 9.478 3.35 11.035 3.2a11.997 11.997 0 0 1 2.878.072c2.112.315 3.742 1.204 4.854 2.649.511.664.939 1.505 1.227 2.41.032.101.063.183.07.183.015 0 1.925-.47 1.936-.477.016-.01-.17-.57-.292-.884-.928-2.375-2.584-4.097-4.853-5.047-1.136-.475-2.398-.747-3.905-.84a21.664 21.664 0 0 0-1.32-.01Zm2.362 11.049c.399.032.81.085 1.114.142l.12.021c.008 0-.008.182-.036.381-.098.718-.293 1.31-.579 1.754-.472.735-1.194 1.098-2.276 1.146-.84.037-1.607-.17-2.092-.567-.684-.559-.722-1.502-.086-2.117.188-.182.374-.304.655-.43.435-.194.985-.308 1.666-.346.28-.015 1.253-.006 1.514.016Z">
+              </path>
+            </svg></span>
+          <span class="h-16 w-16 border p-2 rounded-xl"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor"
+                d="M16.1 1c.347 3.122 2.01 4.983 4.9 5.181v3.511c-1.675.172-3.142-.402-4.849-1.485v6.568c0 8.342-8.677 10.95-12.166 4.97-2.242-3.848-.87-10.6 6.322-10.87v3.702c-.548.092-1.133.237-1.668.429-1.6.567-2.507 1.63-2.255 3.505.485 3.59 6.77 4.653 6.247-2.363V1.007h3.47V1Z">
+              </path>
+            </svg></span>
+          <span class="h-16 w-16 border p-2 rounded-xl"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor"
+                d="M13.903 10.469 21.348 2h-1.764l-6.465 7.353L7.955 2H2l7.808 11.12L2 22h1.764l6.828-7.765L16.044 22H22l-8.097-11.531Zm-2.417 2.748-.791-1.107L4.4 3.3h2.71l5.08 7.11.791 1.107 6.604 9.242h-2.71l-5.389-7.542Z">
+              </path>
+            </svg></span>
+          <span class="h-16 w-16 border p-2 rounded-xl"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor"
+                d="M23.76 7.148s-.234-1.68-.954-2.42c-.912-.97-1.935-.974-2.404-1.031-3.359-.247-8.397-.247-8.397-.247h-.01s-5.038 0-8.397.247c-.469.057-1.491.061-2.404 1.032-.72.74-.954 2.42-.954 2.42S0 9.12 0 11.092v1.85c0 1.971.24 3.944.24 3.944s.234 1.68.954 2.42c.913.97 2.112.939 2.646 1.04 1.92.188 8.16.246 8.16.246s5.043-.008 8.402-.255c.469-.056 1.492-.06 2.404-1.032.72-.74.954-2.42.954-2.42s.24-1.972.24-3.944v-1.85c0-1.971-.24-3.944-.24-3.944ZM9.523 15.183V8.335l6.484 3.435-6.484 3.413Z">
+              </path>
+            </svg></span>
+        </div>
+      </div>
+    </section>
+    <!-- light purple  -->
+
+    <section class="py-5 px-4 text-black">
+      <div
+        class="hidden bg-purple-200 rounded-3xl lg:max-w-6xl mx-auto lg:flex lg:flex-col lg:gap-5  lg:min-h-[700px] relative">
+        <div class="flex gap-2 justify-center items-center m-10">
+          <Button class="bg-black h-10 w-30 text-white rounded-3xl">Creators</Button>
+          <Button class="hover:bg-black hover:text-white h-10 w-40 rounded-3xl text-black border">Small
+            businesses</Button>
+          <Button class="hover:bg-black  hover:text-white h-10 w-30 text-black rounded-3xl border">Agencies</Button>
+        </div>
+        <div class="flex flex-col justify-star gap-5 px-15">
+          <h1 class="text-4xl font-semibold">Grow from zeroto → oneto → one million</h1>
+          <p>Whether you’re just getting started on your creator journey or scaling your audience <br> to new heights,
+            Buffer will get your content in front of more people.</p>
+          <p class="flex items-center"><svg class="VerticalsSection_contentListItemIcon__K9Cam" width="24" height="24"
+              viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor"
+                d="M20.707 5.293a1 1 0 0 1 0 1.414l-11 11a1 1 0 0 1-1.414 0l-5-5a1 1 0 1 1 1.414-1.414L9 15.586 19.293 5.293a1 1 0 0 1 1.414 0Z">
+              </path>
+            </svg>Save all your ideas as inspiration strikes</p>
+          <p class="flex items-center"><svg class="VerticalsSection_contentListItemIcon__K9Cam" width="24" height="24"
+              viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor"
+                d="M20.707 5.293a1 1 0 0 1 0 1.414l-11 11a1 1 0 0 1-1.414 0l-5-5a1 1 0 1 1 1.414-1.414L9 15.586 19.293 5.293a1 1 0 0 1 1.414 0Z">
+              </path>
+            </svg>Learn exactly what content work best and why</p>
+          <p class="flex items-center"><svg class="VerticalsSection_contentListItemIcon__K9Cam" width="24" height="24"
+              viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor"
+                d="M20.707 5.293a1 1 0 0 1 0 1.414l-11 11a1 1 0 0 1-1.414 0l-5-5a1 1 0 1 1 1.414-1.414L9 15.586 19.293 5.293a1 1 0 0 1 1.414 0Z">
+              </path>
+            </svg>Create once, crosspost everywhere</p>
+        </div>
+        <!-- 3 divs images  -->
+        <div class="flex w-[95%]  mx-15 my-10 gap-5 justify-center items-center lg:max-w-5xl">
+          <div class="border bg-pink-50 h-55 w-90 rounded-3xl flex flex-col justify-center items-center">
+            <div class="relative inline-block">
+              <img src="./images/user1.webp" alt="user" class="h-[75px] w-[75px] object-cover border rounded-4xl">
+              <svg class="absolute -bottom-1 -right-2 w-6 h-6 bg-white rounded-full p-1 shadow" viewBox="0 0 24 24"
+                aria-hidden="true" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M18.338 18.338H15.67v-4.177c0-.997-.018-2.278-1.387-2.278-1.39 0-1.602 1.085-1.602 2.206v4.25h-2.668v-8.59h2.561v1.173h.036c.356-.675 1.227-1.388 2.526-1.388 2.703 0 3.202 1.78 3.202 4.092v4.712ZM7.004 8.574a1.548 1.548 0 1 1 0-3.097 1.548 1.548 0 0 1 0 3.097ZM5.67 18.338h2.67v-8.59h-2.67v8.59ZM19.668 3H4.328C3.597 3 3 3.581 3 4.297v15.404C3 20.418 3.596 21 4.329 21h15.339c.734 0 1.332-.582 1.332-1.299V4.297C21 3.581 20.402 3 19.668 3Z">
+                </path>
+              </svg>
+            </div>
+            <h1 class="text-xl">@rita_codes</h1>
+            <p class="text-lg">34.9k followers on X</p>
+          </div>
+          <div class="border bg-pink-50 h-55 w-90 rounded-3xl flex flex-col justify-center items-center">
+            <div class="relative inline-block">
+              <img src="./images/user1.webp" alt="user" class="h-[75px] w-[75px] object-cover border rounded-4xl">
+              <svg class="absolute -bottom-1 -right-2 w-6 h-6 bg-white rounded-full p-1 shadow" viewBox="0 0 24 24"
+                aria-hidden="true" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M18.338 18.338H15.67v-4.177c0-.997-.018-2.278-1.387-2.278-1.39 0-1.602 1.085-1.602 2.206v4.25h-2.668v-8.59h2.561v1.173h.036c.356-.675 1.227-1.388 2.526-1.388 2.703 0 3.202 1.78 3.202 4.092v4.712ZM7.004 8.574a1.548 1.548 0 1 1 0-3.097 1.548 1.548 0 0 1 0 3.097ZM5.67 18.338h2.67v-8.59h-2.67v8.59ZM19.668 3H4.328C3.597 3 3 3.581 3 4.297v15.404C3 20.418 3.596 21 4.329 21h15.339c.734 0 1.332-.582 1.332-1.299V4.297C21 3.581 20.402 3 19.668 3Z">
+                </path>
+              </svg>
+            </div>
+            <h1 class="text-xl">@Pauldelabaume</h1>
+            <p class="text-lg">21k followers on LinkedIn</p>
+          </div>
+          <div class="border bg-pink-50 h-55 w-90 rounded-3xl flex flex-col justify-center items-center">
+            <div class="relative inline-block">
+              <img src="./images/user1.webp" alt="user" class="h-[75px] w-[75px] object-cover border rounded-4xl">
+              <svg class="absolute -bottom-1 -right-2 w-6 h-6 bg-white rounded-full p-1 shadow" viewBox="0 0 24 24"
+                aria-hidden="true" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M18.338 18.338H15.67v-4.177c0-.997-.018-2.278-1.387-2.278-1.39 0-1.602 1.085-1.602 2.206v4.25h-2.668v-8.59h2.561v1.173h.036c.356-.675 1.227-1.388 2.526-1.388 2.703 0 3.202 1.78 3.202 4.092v4.712ZM7.004 8.574a1.548 1.548 0 1 1 0-3.097 1.548 1.548 0 0 1 0 3.097ZM5.67 18.338h2.67v-8.59h-2.67v8.59ZM19.668 3H4.328C3.597 3 3 3.581 3 4.297v15.404C3 20.418 3.596 21 4.329 21h15.339c.734 0 1.332-.582 1.332-1.299V4.297C21 3.581 20.402 3 19.668 3Z">
+                </path>
+              </svg>
+            </div>
+            <h1 class="text-xl">@yola_bastos</h1>
+            <p class="text-lg">14.6k followers on Instagram</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- about us  -->
+    <section class="h-[700px] relative">
+      <!-- Black Card -->
+      <div
+        class="bg-gray-900 m-15 rounded-3xl h-[80%] flex flex-col justify-center items-center gap-6 relative lg:max-w-6xl">
+        <h1 class="text-white text-4xl">About Us</h1>
+        <p class="text-white text-xl text-center">
+          We’re an optimistic and gratitude-filled group of remote workers scattered around the <br>
+          world and dedicated to creating a product our customers will use and love.
+        </p>
+        <button class="bg-green-300 h-15 w-60 rounded-3xl">Learn more about us →</button>
+
+        <!-- Images Row Overlapping -->
+        <div
+          class="absolute lg:-bottom-28  -bottom-40 left-1/2 -translate-x-1/2 flex gap-5 items-center justify-center">
+          <img src="./images/t1.webp" alt="" class="object-cover h-60 w-30 rounded-tr-xl rounded-br-xl shadow-lg">
+          <img src="./images/t2.webp" alt="" class="object-cover h-70 w-50 rounded-xl shadow-lg">
+          <img src="./images/t3.webp" alt="" class="object-cover h-50 w-70 rounded-xl shadow-lg">
+          <img src="./images/t4.webp" alt="" class="object-cover h-60 w-40 rounded-xl shadow-lg">
+          <img src="./images/t5.webp" alt="" class="object-cover h-70 w-40 rounded-xl shadow-lg">
+          <img src="./images/t6.webp" alt="" class="object-cover h-60 w-33 rounded-tl-xl rounded-bl-xl shadow-lg">
+        </div>
+      </div>
+    </section>
+    <!-- company section -->
+    <section class="w-full mt-5 p-25">
+      <div class="flex flex-col lg:flex-row lg:justify-between lg:items-start lg:items-center mb-10 gap-5 lg:max-w-6xl">
+        <div class="lg:text-left">
+          <h1 class="text-3xl sm:text-5xl font-bold mb-5">We are an open company</h1>
+          <p class="text-lg sm:text-xl">
+            Since 2013, we’ve shared Buffer’s finances, team salaries, and other key metrics
+            openly. Our <br class="hidden lg:block">
+            commitment to transparency is rooted in our belief that it fosters trust, keeps us
+            accountable, and helps drive positive change within our industry.
+          </p>
+        </div>
+        <button
+          class="btn h-14 sm:h-20 w-60 lg:max-w-4xl sm:w-70 mx-auto hover:bg-gray-100 border rounded-4xl text-lg sm:text-xl text-gray-800 order-last lg:order-none">
+          Open dashboard →
+        </button>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:max-w-6xl text-black">
+        <div class="flex flex-col border bg-white border-gray-300 rounded-3xl p-5 items-start">
+          <p class="text-gray-600">MAU</p>
+          <p class="text-gray-600 mb-10">Monthly active users</p>
+          <h1 class="text-4xl sm:text-5xl font-bold ">188,971</h1>
+        </div>
+        <div class="flex flex-col bg-white border border-gray-300 rounded-3xl p-5 items-start">
+          <p class="text-gray-600 mb-15">TOTAL CUSTOMERS</p>
+          <h1 class="text-4xl sm:text-5xl font-bold ">66,553</h1>
+        </div>
+        <div class="flex flex-col bg-white border border-gray-300 rounded-3xl p-5 items-start">
+          <p class="text-gray-600">TEAM MATES</p>
+          <p class="text-gray-600 mb-10">Across 15 countries</p>
+          <h1 class="text-4xl sm:text-5xl font-bold ">73</h1>
+        </div>
+        <div class="flex flex-col bg-white border border-gray-300 rounded-3xl p-5 items-start">
+          <p class="text-gray-600">ARR</p>
+          <p class="text-gray-600 mb-10">Annual recurring revenue</p>
+          <h1 class="text-4xl sm:text-5xl font-bold ">$22.4M</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- multi grid section -->
+    <section>
+      <!-- gary bg -->
+      <div class="bg-gray-200 rounded-3xl mx-auto py-10 lg:max-w-6xl text-black">
+        <!-- resources  -->
+        <div class="flex flex-col gap-5 items-start p-10 mb-5">
+          <p class="text-2xl text-black">Resources</p>
+          <h1 class="text-black text-5xl font-semibold">Fuel your social media success</h1>
+          <p class="text-2xl text-black">Everything you need to level up your social strategy—in one place.</p>
+        </div>
+        <!-- grid section -->
+        <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-2 px-6 lg:grid-rows-[370px_300px]">
+          <!-- box 1 -->
+          <div class="flex flex-col bg-green-300 rounded-xl py-2 px-3 lg:col-span-1 overflow-hidden">
+            <div class="flex items-center justify-between mt-2">
+              <h1 class="text-2xl font-semibold">Free Marketing Tools</h1>
+              <button
+                class="text-black text-4xl border rounded-full h-12 w-12 text-center hover:bg-black hover:text-white">→</button>
+            </div>
+            <p class="text-gray-500 text-md">A collection of free tools to make your social media marketing easier and
+              more effective</p>
+            <img src="./images/g1.webp" alt="" class="mt-5 object-cover">
+          </div>
+          <!-- Box 2 -->
+          <div class="bg-purple-300 rounded-xl col-span-1 lg:col-span-2 lg:h-[200px] lg:overflow-hidden">
+            <div class="flex  items-start gap-5">
+              <div class="flex  flex-col  justify-start p-5">
+                <div class="flex  items-start gap-5 pt-5">
+                  <h1 class="text-2xl font-semibold">Social Media Glossary</h1>
+                  <button
+                    class="text-black text-4xl border rounded-full h-12 w-12 text-center hover:bg-black hover:text-white">→</button>
+                </div>
+                <p class="mb-10 text-gray-500 text-md">A glossary of the most popular terms to help you make sense of
+                  all the social media lingo</p>
+              </div>
+              <div>
+                <img src="./images/g2.webp" alt="" class="object-cover">
+              </div>
+            </div>
+
+          </div>
+          <!-- Box 3 -->
+          <div class="bg-red-200 rounded-xl pt-2 px-3 lg:col-span-1 lg:overflow-hidden ">
+            <div class="flex items-center justify-between mt-2">
+              <h1 class="text-2xl font-semibold">Social Media Marketing 101</h1>
+              <button
+                class="text-black text-4xl border rounded-full h-12 w-12 text-center hover:bg-black hover:text-white">→</button>
+            </div>
+            <p class="text-md text-gray-500">Your go-to-guide for mastering the basics of social media and beyond</p>
+            <img src="./images/g3.webp" alt="" class="object-cover">
+          </div>
+          <!-- Box 4 -->
+          <div class="bg-blue-300 rounded-xl px-6 lg:col-span-1 lg:-mt-35 lg:mr-20  lg:overflow-hidden">
+            <div class="flex gap-5 items-center justify-around mt-5">
+              <h1 class="text-2xl font-semibold">Best Time to Post</h1>
+              <button
+                class="text-black text-4xl border rounded-full h-12 w-12 text-center hover:bg-black hover:text-white">→</button>
+            </div>
+            <p class="text-md text-gray-500 mb-20">Discover the best times to post on social media to maximize your
+              engagement</p>
+            <img src="./images/g4.webp" alt="" class="object-cover ">
+          </div>
+
+          <!-- Box 5 -->
+          <div class="bg-orange-200 rounded-xl px-6 col-span-1 lg:-mt-35 lg:-ml-20 lg:overflow-hidden">
+            <div class="flex  items-center justify-between mt-5">
+              <h1 class="text-2xl font-semibold">Social Media Resources</h1>
+              <button
+                class="text-black text-4xl border rounded-full h-12 w-12 text-center hover:bg-black hover:text-white">→</button>
+            </div>
+            <p class="text-md text-gray-500 ">A collection of articles and interviews packed with your tips and storesi
+              and insights to level up your social media marketing game</p>
+            <img src="./images/g5.webp" alt="" class=" object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- grow section -->
+    <section class="h-[400px] w-full flex items-center justify-center my-6">
+      <div
+        class="flex flex-col bg-gray-800 rounded-4xl h-[400px] lg:max-w-6xl w-full mx-auto justify-center items-center gap-4 p-20">
+        <h1 class="text-white text-3xl lg:text-7xl text-center">
+          Grow your social presence with confidence
+        </h1>
+        <button class="bg-green-300 rounded-full px-10 py-5 font-medium mt-5">
+          Get started for free →
+        </button>
+        <p class="text-white text-base">No credit card needed. Free forever.</p>
+      </div>
+    </section>
+  </main>
+  <!-- footer -->
+  <footer class="bg-gray-900 w-full px-10 py-5">
+    <div class="grid grid-cols-2 lg:grid-cols-6 lg:gap-5">
+      <div class="justify-start gap-2 flex flex-col items-start text-white">
+        <div class="text-green-400">Tools</div>
+        <p>Create</p>
+        <p>Publish</p>
+        <p>Engage</p>
+        <p>Analyze</p>
+        <p>Collaborate</p>
+      </div>
+      <div class="justify-start gap-2 flex flex-col items-start text-white">
+        <div class="text-green-400">Features</div>
+        <div>AI Assistant</div>
+        <div>Start Page</div>
+        <div>Integrations</div>
+        <div>iOS App</div>
+        <div>Android App</div>
+        <div>Browser Extension</div>
+      </div>
+      <div class="justify-start gap-2 flex flex-col items-start text-white">
+        <div class="text-green-400">Resources</div>
+        <div>Blog</div>
+        <div>Template Library</div>
+        <div>Social Media Insights</div>
+        <div>Resource Library</div>
+        <div>Social Media Terms Glossary</div>
+        <div>Free Marketing Tools</div>
+        <div>AI Social Media Post Generator</div>
+        <div>Compare Buffer</div>
+        <div>Community</div>
+      </div>
+      <div class="justify-start gap-2 flex flex-col items-start text-white">
+        <p class="text-green-400">Transparency</p>
+        <p>Open Hub</p>
+        <p>Transparent Metrics</p>
+        <p>Transparent Pricing</p>
+        <p>Transparent Salaries</p>
+        <p>Product Roadmap</p>
+      </div>
+      <div class="justify-start gap-2 flex flex-col items-start text-white">
+        <p class="text-green-400">Support</p>
+        <p>Help Center</p>
+        <p>Status</p>
+        <p>Changelog</p>
+        <p>Request a Feature</p>
+      </div>
+      <div class="justify-start gap-2 flex flex-col items-start text-white">
+        <p class="text-green-400">Company</p>
+        <p>About</p>
+        <p>Careers</p>
+        <p>Press</p>
+        <p>Legal</p>
+        <p>Sitemap</p>
+      </div>
+    </div>
+    <!-- icons -->
+    <div class="flex flex-col lg:flex-row justify-between items-center">
+      <svg class="text-green-200 h-80 w-80" viewBox="0 0 132 36" aria-hidden="true" fill="currentColor">
+        <path
+          d="M1 9.34 15.17 2l14.322 7.34-14.322 7.366L1 9.34ZM86.068 12.909v-.175c0-2.421 1.425-3.195 3.823-3.02V5.294c-5.746-.35-8.47 2.521-8.47 7.439v.175h-2.598v4.418h3.598v13.38h4.647v-13.38h5.346v13.38h4.647v-13.38h3.823v-4.418h-3.823v-.175c0-2.421 1.4-3.195 3.823-3.02V5.294c-5.746-.35-8.47 2.521-8.47 7.439v.175h-5.346Z">
+        </path>
+        <path fill-rule="evenodd"
+          d="M53.588 17.751c1.474-1.173 2.374-2.845 2.374-4.992 0-4.169-3.398-7.014-7.67-7.014h-9.92v24.912h10.72c4.371 0 7.87-2.946 7.87-7.214-.05-2.571-1.35-4.543-3.374-5.692Zm-5.271-7.388c1.599 0 2.698 1.173 2.698 2.745 0 1.573-1.15 2.746-2.698 2.746h-4.972v-5.491h4.972Zm.75 15.726h-5.722v-5.866h5.721c1.7 0 2.923 1.248 2.923 2.92 0 1.698-1.224 2.946-2.923 2.946Z">
+        </path>
+        <path
+          d="M71.451 12.883v9.61c0 3.096-1.698 4.419-3.972 4.419-2.099 0-3.573-1.248-3.573-3.67V12.883H59.26v10.933c0 4.743 2.973 7.364 6.82 7.364 2.424 0 4.298-.898 5.348-2.496v1.997h4.647V12.883H71.45Z">
+        </path>
+        <path fill-rule="evenodd"
+          d="M119.147 23.667h-13.592c.675 2.346 2.623 3.345 5.047 3.345 1.824 0 3.273-.749 4.047-1.773l3.748 2.122c-1.674 2.422-4.372 3.82-7.845 3.82-6.046 0-9.869-4.094-9.869-9.411 0-5.317 3.848-9.41 9.519-9.41 5.322 0 9.119 4.168 9.119 9.41 0 .699-.075 1.298-.174 1.897Zm-8.945-7.14c-2.498 0-4.197 1.324-4.722 3.595h9.194c-.574-2.57-2.523-3.594-4.472-3.594Z">
+        </path>
+        <path
+          d="M126.044 15.954v-3.07h-4.648v17.798h4.648V22.17c0-3.745 3.048-4.818 5.471-4.519v-5.117c-2.273 0-4.547.999-5.471 3.42ZM15.17 29.301 5.503 24.06 1 26.493l14.17 7.676 14.322-7.676-4.553-2.434-9.77 5.242Z">
+        </path>
+        <path d="m5.503 15.787 9.667 4.754 9.769-4.754 4.553 2.218-14.322 6.973L1 18.005l4.503-2.218Z"></path>
+      </svg>
+      <div>
+        <div class="flex gap-5 justify-center">
+          <span class="h-10 w-10 text-white"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor"
+                d="M5.769 4.212C8.29 5.972 11.004 9.539 12 11.453c.996-1.914 3.709-5.482 6.231-7.241C20.051 2.942 23 1.96 23 5.086c0 .624-.385 5.244-.611 5.994-.785 2.608-3.647 3.273-6.192 2.87 4.449.704 5.58 3.035 3.136 5.366-4.642 4.426-6.672-1.111-7.192-2.53-.096-.26-.14-.382-.141-.278 0-.104-.045.018-.14.278-.52 1.419-2.55 6.956-7.193 2.53-2.445-2.331-1.313-4.662 3.136-5.366-2.545.403-5.407-.262-6.192-2.87C1.385 10.33 1 5.71 1 5.086c0-3.126 2.949-2.144 4.769-.874Z">
+              </path>
+            </svg></span>
+          <span class="h-10 w-10 text-white"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor"
+                d="M23 12.067C23 5.955 18.075 1 12 1S1 5.955 1 12.067C1 17.591 5.023 22.17 10.281 23v-7.734H7.488v-3.199h2.793V9.63c0-2.774 1.643-4.306 4.155-4.306 1.204 0 2.462.216 2.462.216v2.724h-1.387c-1.366 0-1.792.853-1.792 1.728v2.076h3.05l-.487 3.2h-2.563V23C18.977 22.17 23 17.591 23 12.067Z">
+              </path>
+            </svg></span>
+          <span class="h-10 w-10 text-white"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor" fill-rule="evenodd"
+                d="M20.387 3.653C19.34 2.565 17.847 2 16.153 2H7.847C4.339 2 2 4.339 2 7.847v8.266c0 1.734.565 3.226 1.694 4.314C4.782 21.476 6.234 22 7.887 22h8.226c1.734 0 3.185-.564 4.234-1.573C21.435 19.38 22 17.887 22 16.153V7.847c0-1.694-.564-3.145-1.613-4.194Zm-.161 12.5c0 1.25-.444 2.258-1.17 2.944-.725.685-1.733 1.048-2.943 1.048H7.887c-1.21 0-2.218-.363-2.943-1.048-.726-.726-1.09-1.734-1.09-2.984V7.847c0-1.21.364-2.218 1.09-2.944.685-.685 1.733-1.048 2.943-1.048h8.306c1.21 0 2.218.363 2.944 1.089.686.725 1.089 1.733 1.089 2.903v8.306Zm-1.694-9.476a1.17 1.17 0 1 1-2.339 0 1.17 1.17 0 0 1 2.339 0ZM6.838 11.96c0-2.863 2.34-5.162 5.162-5.162s5.161 2.34 5.161 5.162S14.863 17.12 12 17.12a5.146 5.146 0 0 1-5.162-5.161Zm1.855 0A3.321 3.321 0 0 0 12 15.266a3.321 3.321 0 0 0 3.306-3.306A3.321 3.321 0 0 0 12 8.653a3.321 3.321 0 0 0-3.307 3.307Z">
+              </path>
+            </svg></span>
+          <span class="h-10 w-10 text-white"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor" fill-rule="evenodd"
+                d="M18.338 18.338H15.67v-4.177c0-.997-.018-2.278-1.387-2.278-1.39 0-1.602 1.085-1.602 2.206v4.25h-2.668v-8.59h2.561v1.173h.036c.356-.675 1.227-1.388 2.526-1.388 2.703 0 3.202 1.78 3.202 4.092v4.712ZM7.004 8.574a1.548 1.548 0 1 1 0-3.097 1.548 1.548 0 0 1 0 3.097ZM5.67 18.338h2.67v-8.59h-2.67v8.59ZM19.668 3H4.328C3.597 3 3 3.581 3 4.297v15.404C3 20.418 3.596 21 4.329 21h15.339c.734 0 1.332-.582 1.332-1.299V4.297C21 3.581 20.402 3 19.668 3Z">
+              </path>
+            </svg></span>
+          <span class="h-10 w-10 text-white"><svg class="object-cover w-full h-full" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path fill="currentColor" fill-rule="evenodd"
+                d="M16.68 17.768c2.955-.329 5.528-2.027 5.852-3.58.51-2.444.467-5.965.467-5.965 0-4.773-3.352-6.171-3.352-6.171-1.69-.725-4.592-1.029-7.608-1.052h-.074c-3.015.023-5.915.327-7.606 1.052 0 0-3.352 1.398-3.352 6.171l-.003.91c-.005.88-.01 1.856.017 2.875.122 4.667.918 9.267 5.544 10.41 2.133.526 3.964.636 5.439.56 2.675-.138 4.176-.89 4.176-.89l-.088-1.81s-1.911.562-4.058.494c-2.127-.068-4.372-.214-4.716-2.65a4.664 4.664 0 0 1-.048-.683s2.088.476 4.734.59c1.618.068 3.135-.09 4.676-.26Zm2.365-3.396V8.593c0-1.18-.322-2.12-.97-2.814-.668-.694-1.542-1.05-2.627-1.05-1.257 0-2.208.45-2.837 1.351L12 7.036l-.611-.956c-.63-.9-1.58-1.351-2.836-1.351-1.086 0-1.96.356-2.628 1.05-.648.695-.97 1.633-.97 2.814v5.779h2.454V8.763c0-1.182.534-1.782 1.6-1.782 1.18 0 1.771.711 1.771 2.12v3.07h2.44V9.1c0-1.409.591-2.12 1.77-2.12 1.067 0 1.6.6 1.6 1.782v5.609h2.455Z">
+              </path>
+            </svg></span>
+
+        </div>
+        <p class="text-white mt-3">Copyright ©2025 Buffer|Privacy|Terms|Security</p>
+      </div>
+    </div>
+    <div class="h-[1px] w-full bg-green-50 m-5 text-center"></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
+</html>
